@@ -1,0 +1,6 @@
+gon.json
+static/
+bin/
+go-live
+vendor/
+release/

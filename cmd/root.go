@@ -2,14 +2,11 @@ package cmd
 
 import (
 	"fmt"
-	"log"
-	"net/http"
 	"os"
-	"time"
 
-	"github.com/spf13/cobra"
-
+	"../lib"
 	homedir "github.com/mitchellh/go-homedir"
+	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
@@ -23,38 +20,20 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		dir, _ := cmd.Flags().GetString("dir")
 		if dir == "" {
-			dir = "."
+			dir = "./"
 		}
+		if dir[len(dir)-1] != '/' {
+			dir += "/"
+		}
+
 		port, _ := cmd.Flags().GetString("port")
 		if port == "" {
-			port = "8000"
+			port = "9000"
 		}
 		port = ":" + port
-		go printer(dir, port)
-		startServer(dir, port)
+		go lib.Printer(dir, port)
+		lib.StartServer(dir, port)
 	},
-}
-
-func printer(dir string, port string) {
-	start := time.Now()
-	for {
-		fmt.Println("\033[2J")
-		fmt.Println("go-live\n--")
-		fmt.Println("Serving: " + dir)
-		fmt.Println("Port: " + port)
-		fmt.Println(time.Since(start).Round(time.Second))
-		time.Sleep(100 * time.Millisecond)
-	}
-}
-
-func startServer(dir string, port string) {
-	fs := http.FileServer(http.Dir(dir))
-	http.Handle("/", fs)
-
-	err := http.ListenAndServe(port, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

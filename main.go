@@ -16,42 +16,13 @@ limitations under the License.
 package main
 
 import (
-	"fmt"
 	"log"
-	"net/http"
-	"time"
 
 	"./cmd"
 )
 
-func printer(start time.Time, dir string, port string) {
-
-	for {
-		fmt.Println("\033[2J")
-		fmt.Println("go-live\n--")
-		fmt.Println("Serving: " + dir)
-		fmt.Println("Port: " + port)
-		fmt.Println(time.Since(start).Round(time.Second))
-		time.Sleep(100 * time.Millisecond)
-	}
-}
-
 func main() {
 	cmd.Execute()
-
-	start := time.Now()
-	dir := "./static"
-	port := ":3000"
-
-	go printer(start, dir, port)
-
-	fs := http.FileServer(http.Dir(dir))
-	http.Handle("/", fs)
-
-	err := http.ListenAndServe(port, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
 }
 
 func printInitial() {

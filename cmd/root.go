@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"../lib"
+	"github.com/antsankov/go-live/lib"
 	homedir "github.com/mitchellh/go-homedir"
+	b "github.com/pkg/browser"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -31,8 +32,17 @@ var rootCmd = &cobra.Command{
 			port = "9000"
 		}
 		port = ":" + port
-		go lib.Printer(dir, port)
+		url := fmt.Sprintf("http://localhost%s/", port)
+
+		go lib.Printer(dir, port, url)
+
+		quiet, _ := cmd.Flags().GetBool("quiet")
+		if quiet == false {
+			b.OpenURL(url)
+		}
+
 		lib.StartServer(dir, port)
+
 	},
 }
 
@@ -56,8 +66,9 @@ func init() {
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().StringP("port", "p", "", "Set port to run on.")
-	rootCmd.Flags().StringP("dir", "d", "", "Set the directory to serve.")
+	rootCmd.Flags().BoolP("quiet", "q", false, "Open up the browser when started. Useful for development. Default: False")
+	rootCmd.Flags().StringP("port", "p", "", "Set port to run on. Default: 9000")
+	rootCmd.Flags().StringP("dir", "d", "", "Set the directory to serve. Default: ./")
 }
 
 // initConfig reads in config file and ENV variables if set.

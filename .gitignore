@@ -1,2 +1,5 @@
 static/
 bin/
+go-live
+vendor/
+release/

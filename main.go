@@ -18,7 +18,7 @@ package main
 import (
 	"log"
 
-	"./cmd"
+	"github.com/antsankov/go-live/cmd"
 )
 
 func main() {

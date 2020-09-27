@@ -6,10 +6,13 @@ import (
 	"time"
 )
 
-func StartServer(dir string, port string) {
+func StartServer(dir string, port string, cache bool) {
 	fs := http.FileServer(http.Dir(dir))
-	http.Handle("/", NoCache(fs))
-
+	if cache {
+		http.Handle("/", fs)
+	} else {
+		http.Handle("/", NoCache(fs))
+	}
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		log.Fatal(err)

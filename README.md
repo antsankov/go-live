@@ -1,6 +1,9 @@
 # go-live
 
-A light-weight Go utility server that hosts files (HTML or otherwise) over HTTP. Can be used for local development or production static site serving. By default, it hosts the directory it is executed in. Baesd on JavaScript's famous `live-server` utility. Supports Linux, Windows, and Mac.
+
+A light-weight Go server that hosts the file directory it's in (HTML or otherwise) over HTTP. Can be used for local development or production static site serving as a drop-in personal Github-pages. By default, it hosts the directory it is executed in. 
+
+Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and Mac, as well as ARM32/64.
 
 Help wanted! Check out the TODO list if interested.
 
@@ -16,6 +19,8 @@ Help wanted! Check out the TODO list if interested.
 `-d / --dir` : The directory you want to host from. Default: `./` (current directory)
 
 `-q / --quiet` : Set quiet mode to on to avoid opening browser on startup. Default `false`
+
+`-c / --use-browser-cache` : Allow browser to cache pages. Bad for development, but good if you're hosting prod and can't use a load balancer or if HTML pages never change. Default `false`
 
 `--help` : Help menu
 
@@ -46,6 +51,8 @@ go-live ...
 ```
 
 ## TODO
+- [ ] Copy Paste from Terminal fix.
+- [ ] Publish Gitbook documentation. 
 - [ ] HTTPS support.
 - [ ] Publish as a Go package.
 - [ ] Local development mode refresh page. 

@@ -41,8 +41,8 @@ var rootCmd = &cobra.Command{
 			b.OpenURL(url)
 		}
 
-		lib.StartServer(dir, port)
-
+		cache, _ := cmd.Flags().GetBool("browser-cache")
+		lib.StartServer(dir, port, cache)
 	},
 }
 
@@ -67,6 +67,7 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("quiet", "q", false, "Open up the browser when started. Useful for development. Default: False")
+	rootCmd.Flags().BoolP("use-browser-cache", "c", false, "Allow browser to cache page assets. Use if you don't want to use a load balancer or pages won't change. Default: False")
 	rootCmd.Flags().StringP("port", "p", "", "Set port to run on. Default: 9000")
 	rootCmd.Flags().StringP("dir", "d", "", "Set the directory to serve. Default: ./")
 }

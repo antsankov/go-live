@@ -19,7 +19,7 @@ func Printer(dir string, port string, url string) {
 			fmt.Printf("Local: http://%s%s\n", local, port)
 		}
 		if err2 == nil {
-			fmt.Printf("External: http://%s%s\n", external, port)
+			fmt.Printf("Internet: http://%s%s\n", external, port)
 		}
 		fmt.Println(time.Since(start).Round(time.Second))
 		time.Sleep(100 * time.Millisecond)

@@ -11,6 +11,7 @@ cross-compile:
 	env GOOS=linux GOARCH=386 go build -o ./release/go-live-linux-x32 -ldflags "-s -w" -trimpath -mod=readonly
 	env GOOS=linux GOARCH=amd64 go build -o ./release/go-live-linux-x64 -ldflags "-s -w" -trimpath -mod=readonly
 	env GOOS=darwin GOARCH=amd64 go build -o ./release/go-live-mac-x64 -ldflags "-s -w" -trimpath -mod=readonly
+	env GOOS=windows GOARCH=386 go build -o ./release/go-live-windows-x32.exe -ldflags "-s -w" -trimpath -mod=readonly
 	env GOOS=windows GOARCH=amd64 go build -o ./release/go-live-windows-x64.exe -ldflags "-s -w" -trimpath -mod=readonly
 	
 clean:

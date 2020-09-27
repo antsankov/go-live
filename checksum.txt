@@ -1,0 +1,9 @@
+make cross-compile && shasum -a 256 release/*
+===
+e8b1988d024ecc93c877c660546df3de6486b8d70cea547dfa6b47ecdbec37fb  release/go-live-linux-arm32
+6666e6b7fbc06f82981163cbbbfc7efb51cdca2f655759f0df5d8fe272cf43e2  release/go-live-linux-arm64
+281c2611d449339f21ec023f5822a60f04fa8bb0e8c05772c546a8b8099cf3c9  release/go-live-linux-x32
+b808a5fc0ead3cf5d7de16feca6eba5c7d2f1df3e02f7b89d240964c7fd1d6bc  release/go-live-linux-x64
+e86df07fe7d5bdba5f412d51cc9498b4aaf7c52c46801f418a26944a9c2cfa11  release/go-live-mac-x64
+6306667936247bb597ad7978f1c75a1722c216c1761b282b17457179a22e3ec0  release/go-live-windows-x32.exe
+161d539e60081c7c42dd943e68f7ffa87937c8d7cbaa1b30b9aa1283ad82269e  release/go-live-windows-x64.exe

@@ -19,6 +19,14 @@ var rootCmd = &cobra.Command{
 	Short: "A simple server to host files in a directory.",
 	Long:  `A simple server to host a directory. Can be used either for local development or for production`,
 	Run: func(cmd *cobra.Command, args []string) {
+		// Use a non-cobra check so we get more ways of catching version.
+		if len(os.Args) > 1 {
+			if os.Args[1] == "version" || os.Args[1] == "-v" || os.Args[1] == "--version" {
+				printVersion()
+				return
+			}
+		}
+
 		dir, _ := cmd.Flags().GetString("dir")
 		if dir == "" {
 			dir = "./"
@@ -67,8 +75,9 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("quiet", "q", false, "Open up the browser when started. Useful for development. Default: False")
-	rootCmd.Flags().BoolP("use-browser-cache", "c", false, "Allow browser to cache page assets. Use if you don't want to use a load balancer or pages won't change. Default: False")
+	rootCmd.Flags().BoolP("use-browser-cache", "c", false, "Allow browser to cache page assets. Turn on for prod if not using nginx. Default: False")
 	rootCmd.Flags().StringP("port", "p", "", "Set port to run on. Default: 9000")
+	rootCmd.Flags().BoolP("version", "v", true, "Print the version of go-live.")
 	rootCmd.Flags().StringP("dir", "d", "", "Set the directory to serve. Default: ./")
 }
 

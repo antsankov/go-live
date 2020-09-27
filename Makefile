@@ -1,8 +1,9 @@
 build:
 	go mod tidy && go mod vendor
 	go build -o ./bin/go-live && chmod +X ./bin/*
+	echo "Executable Ready in ./bin/go-live"
 
-lint: 
+format: 
 	gofmt -l -s -w .
 
 cross-compile:

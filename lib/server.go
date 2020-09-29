@@ -1,7 +1,6 @@
 package lib
 
 import (
-	"log"
 	"net/http"
 	"time"
 )
@@ -28,7 +27,7 @@ func incrementRequest() {
 }
 
 // StartServer starts up the file server
-func StartServer(dir string, port string, cache bool) {
+func StartServer(dir string, port string, cache bool) error {
 	fs := http.FileServer(http.Dir(dir))
 	if cache {
 		http.Handle("/", useCache(fs))
@@ -36,9 +35,7 @@ func StartServer(dir string, port string, cache bool) {
 		http.Handle("/", noCache(fs))
 	}
 	err := http.ListenAndServe(port, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
+	return err
 }
 
 func noCache(h http.Handler) http.Handler {

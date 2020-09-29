@@ -6,6 +6,7 @@ build:
 format: 
 	gofmt -l -s -w .
 
+# Compiled with Arch Go package guidelines and removed whitespace.
 cross-compile:
 	env GOOS=linux GOARCH=arm go build -o ./release/go-live-linux-arm32 -ldflags "-s -w" -trimpath -mod=readonly
 	env GOOS=linux GOARCH=arm64 go build -o ./release/go-live-linux-arm64 -ldflags "-s -w" -trimpath -mod=readonly
@@ -18,6 +19,7 @@ cross-compile:
 clean:
 	rm -rf ./bin/*
 	rm -rf ./release/*
+	rm -rf ./vendor/*
 
 run:
 	./bin/go-live

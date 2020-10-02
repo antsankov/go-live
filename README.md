@@ -25,24 +25,23 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 ### [Download latest Binary](https://github.com/antsankov/go-live/releases)
 
-### MacOS
+### MacOS (with Brew)
 
 `brew tap antsankov/go-live`
 
 `brew install go-live` 
 
-(without Brew installed)
+### MacOS (without Brew)
 
 `curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.zip && unzip -d /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
-### Linux x32:
+### Linux 32-Bit (Ubuntu/RHEL/etc.):
 `wget https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
-### Linux x64:
+### Linux 64-Bit (Ubuntu/RHEL/etc.):
 `wget https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-linux-x64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
-- Deb packages and snap coming soon (Help wanted)
-- Verify checksum of binary in checksum.txt
+- Deb packages and snap coming soon! (Help wanted)
 - Need ARM? Check the releases page.
 
 ### Windows
@@ -50,8 +49,8 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 [Download Here and Execute](https://github.com/antsankov/go-live/releases/tag/v1.0.0)
 
 - Chocolatey coming soon! (Help wanted)
-- Make sure when running that all necessary ports are open (Help wanted)
-- Verify checksum of binary in checksum.txt.
+- Make sure when running that all necessary ports are open and user has permissions (Help wanted)
+- QT based front-end? (Help wanted)
 
 ### Go Get (must have Go installed)
 `GO111MODULE=on go get github.com/antsankov/go-live`
@@ -98,6 +97,7 @@ Note: `index.html` is displayed automatically at the root of a directory.
 `sudo go-live --dir ~/example.com/ --serve`
 
 ## TODO (Help Wanted)
+- [ ] Android Support
 - [ ] Docker Support
 - [ ] Benchmarking and performance tests. Large files, and concurrent connections.
 - [x] Gif and Screenshots of it in use. 

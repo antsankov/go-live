@@ -7,19 +7,19 @@
 
 A fast, portable Go command line utility that serves a file directory over HTTP. Can be used for local web development, production static-site serving, or as a network file host. By default, `go-live` serves the directory it is executed in.
 
-Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and Mac, as well as ARM.
+Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and Mac, as well as ARM. See TODO list if interested in helping.
 
-Check out the TODO list if interested in helping.
-
-## Use-Cases
-* Local development of an HTML/JS project (can serve any frontend code).
-* Host a production static site yourself as a GitHub Pages alternative.
-* A lightweight network file host. Can serve over a LAN or the Internet.
-* Run on an embedded system or Kubernetes cluster to share files and host a static website on a network (full binary is less than 5MB). 
+*To use*: Run `go-live` in your terminal while in directory you want to serve.
 
 ## Example
 
 ![go-live-demo](https://user-images.githubusercontent.com/2533512/94636832-5554c900-0293-11eb-8aea-585f8d007fab.gif)
+
+## Use-Cases
+* Local development of an HTML/JS project (can serve any frontend code).
+* Host a production static site yourself as a GitHub Pages alternative.
+* A lightweight network file host that can serve over a LAN or the whole Internet.
+* Run on an embedded system or Kubernetes cluster to share files and host a static website on a network (full binary is less than 5MB). 
 
 ## Install
 
@@ -27,10 +27,13 @@ Check out the TODO list if interested in helping.
 
 ### MacOS
 
-`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.dmg && open go-live-mac.dmg`
+`brew tap antsankov/go-live`
 
-- Homebrew coming soon!
-- Verify checksum of binary in checksum.txt
+`brew install go-live` 
+
+(without Brew installed)
+
+`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.zip && unzip -d /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
 ### Linux x32:
 `wget https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
@@ -38,7 +41,7 @@ Check out the TODO list if interested in helping.
 ### Linux x64:
 `wget https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-linux-x64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
-- Snap coming soon! (Help wanted)
+- Deb packages and snap coming soon (Help wanted)
 - Verify checksum of binary in checksum.txt
 - Need ARM? Check the releases page.
 
@@ -94,16 +97,15 @@ Note: `index.html` is displayed automatically at the root of a directory.
 
 `sudo go-live --dir ~/example.com/ --serve`
 
-## TODO
+## TODO (Help Wanted)
 - [ ] Docker Support
-- [ ] Benchmarking and performance tests.
+- [ ] Benchmarking and performance tests. Large files, and concurrent connections.
 - [x] Gif and Screenshots of it in use. 
 - [ ] Tutorial Use as Github Pages Alternative
 - [X] Copy Paste from Terminal fix.
 - [x] Finish Gitbook documentation. 
 - [ ] HTTPS support.
 - [x] Publish as a Go package.
-- [ ] Live-server like refresh on file change. 
 - [ ] Setup Unit tests.
 - [x] Requests Counter
 - [x] Ability to download as a binary.

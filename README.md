@@ -1,7 +1,7 @@
 <img src="https://user-images.githubusercontent.com/2533512/94706954-16a92800-0300-11eb-97a1-3524d22d7c6d.png" width="75" height="75">
 
 # go-live
-[![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live) [![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live/)
+[![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live) [![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live@v1.0.0?tab=overview)
 
 **Docs**: https://antsankov.gitbook.io/go-live/
 

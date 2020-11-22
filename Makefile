@@ -3,6 +3,9 @@ build:
 	go build -o ./bin/go-live && chmod +X ./bin/*
 	echo "Executable Ready in ./bin/go-live"
 
+docker:
+	docker build -t antsankov/go-live:latest .
+
 format: 
 	gofmt -l -s -w .
 
@@ -15,7 +18,7 @@ cross-compile:
 	env GOOS=darwin GOARCH=amd64 go build -o ./release/go-live-mac-x64 -ldflags "-s -w" -trimpath -mod=readonly 
 	env GOOS=windows GOARCH=386 go build -o ./release/go-live-windows-x32.exe -ldflags "-s -w" -trimpath -mod=readonly
 	env GOOS=windows GOARCH=amd64 go build -o ./release/go-live-windows-x64.exe -ldflags "-s -w" -trimpath -mod=readonly
-	
+
 clean:
 	rm -rf ./bin/*
 	rm -rf ./release/*

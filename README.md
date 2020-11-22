@@ -44,6 +44,16 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 - Deb packages and snap coming soon! (Help wanted)
 - Need ARM? Check the releases page.
 
+### Docker
+To build the image locally:
+`make docker`
+
+or if you would like to pull the image from Dockerhub:
+`docker pull antsankov/go-live`
+
+To run (this will serve the current directory on port 9000):
+`docker run --rm -v "${PWD}":/workdir -p 9000:9000 antsankov/go-live go-live`
+
 ### Windows
 
 [Download Here and Execute](https://github.com/antsankov/go-live/releases/tag/v1.0.0)

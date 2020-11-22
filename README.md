@@ -46,12 +46,15 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 ### Docker
 To build the image locally:
+
 `make docker`
 
-or if you would like to pull the image from Dockerhub:
+*OR* If you would like to pull the image pre-built from Dockerhub:
+
 `docker pull antsankov/go-live`
 
-To run (this will serve the current directory on port 9000):
+To run (will serve current directory on port 9000):
+
 `docker run --rm -v "${PWD}":/workdir -p 9000:9000 antsankov/go-live go-live`
 
 ### Windows
@@ -108,11 +111,11 @@ Note: `index.html` is displayed automatically at the root of a directory.
 
 ## TODO (Help Wanted)
 - [ ] Android Support
-- [ ] Docker Support
+- [x] Docker Support
 - [ ] Benchmarking and performance tests. Large files, and concurrent connections.
 - [x] Gif and Screenshots of it in use. 
 - [ ] Tutorial Use as Github Pages Alternative
-- [X] Copy Paste from Terminal fix.
+- [x] Copy Paste from Terminal fix.
 - [x] Finish Gitbook documentation. 
 - [ ] HTTPS support.
 - [x] Publish as a Go package.

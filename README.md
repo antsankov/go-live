@@ -27,9 +27,7 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 ### MacOS (with Brew)
 
-`brew tap antsankov/go-live`
-
-`brew install go-live` 
+`brew tap antsankov/go-live && brew install go-live` 
 
 ### MacOS (without Brew)
 
@@ -45,12 +43,6 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 - Need ARM? Check the releases page.
 
 ### Docker
-To build the image locally:
-
-`make docker`
-
-*OR* If you would like to pull the image pre-built from Dockerhub:
-
 `docker pull antsankov/go-live`
 
 To run (will serve current directory on port 9000):

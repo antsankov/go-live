@@ -3,7 +3,6 @@
 # go-live
 [![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live)
 [![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live@v1.0.0?tab=overview)
-[![Snap Package](https://snapcraft.io/go-live/badge.svg)](https://snapcraft.io/go-live)
 
 **Docs**: https://antsankov.gitbook.io/go-live/
 

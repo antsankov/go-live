@@ -1,7 +1,9 @@
-<img src="https://user-images.githubusercontent.com/2533512/94706954-16a92800-0300-11eb-97a1-3524d22d7c6d.png" width="75" height="75">
+![go-live logo](./logo.png)
 
 # go-live
-[![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live) [![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live@v1.0.0?tab=overview)
+[![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live)
+[![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live@v1.0.0?tab=overview)
+[![Snap Package](https://snapcraft.io/go-live/badge.svg)](https://snapcraft.io/go-live)
 
 **Docs**: https://antsankov.gitbook.io/go-live/
 
@@ -32,6 +34,9 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 ### MacOS (without Brew)
 
 `curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.zip && unzip -d /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
+
+### Linux (using Snapcraft)
+`snap install go-live`
 
 ### Linux 32-Bit (Ubuntu/RHEL/etc.):
 `wget https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`

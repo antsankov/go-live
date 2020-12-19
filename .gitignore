@@ -4,3 +4,4 @@ bin/
 go-live
 vendor/
 release/
+*.snap

@@ -34,6 +34,8 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 `curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.zip && unzip -d /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
+- ARM64 Mac release is supported. Download file from release, chmod +x, and then move it to your path. Brew coming soon.
+
 ### Linux (using Snapcraft)
 `snap install go-live`
 

@@ -4,7 +4,7 @@
 [![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live)
 [![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live@v1.0.0?tab=overview)
 
-**Docs**: https://antsankov.gitbook.io/go-live/
+**Docs/Tutorials/Info**: https://antsankov.gitbook.io/go-live/
 
 A fast, portable Go command line utility that serves a file directory over HTTP. Can be used for local web development, production static-site serving, or as a network file host. By default, `go-live` serves the directory it is executed in.
 

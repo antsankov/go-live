@@ -80,6 +80,9 @@ make cross-compile && ls release/
 
 ## Flags
 ```
+  -h Print help message for go-live 
+  --help
+
   -c	Allow browser caching of pages. Can lead to stale results, off by default.
   --cache
 

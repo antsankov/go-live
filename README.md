@@ -32,7 +32,7 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 ### MacOS (without Brew)
 
-`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.zip && unzip -d /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
+`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.zip && unzip go-live-mac.zip && mv go-live-mac-x64 /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
 - ARM64 Mac release is supported. Download file from release, chmod +x, and then move it to your path. Brew coming soon.
 

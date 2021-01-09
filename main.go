@@ -9,7 +9,8 @@ import (
 	"github.com/pkg/browser"
 )
 
-const version = "1.0.0"
+// VERSION of Package
+const VERSION = "1.1.0"
 
 func main() {
 	var _quiet bool
@@ -34,7 +35,7 @@ func main() {
 	flag.Parse()
 
 	if _version {
-		fmt.Println(version)
+		fmt.Println(VERSION)
 		return
 	}
 

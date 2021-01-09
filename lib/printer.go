@@ -27,7 +27,7 @@ func Printer(dir string, port string) {
 	}
 
 	printStartMessage(path, port)
-	var lastIP string = ""
+	var lastIP string
 	for {
 		// Move to the fifth row, change if more print statements are added.
 		fmt.Print("\033[5;1H")

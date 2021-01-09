@@ -2,10 +2,11 @@ package lib
 
 import (
 	"net/http"
+	"sync/atomic"
 	"time"
 )
 
-var requests uint64 = 0
+var requests uint64
 var epoch = time.Unix(0, 0).Format(time.RFC1123)
 var noCacheHeaders = map[string]string{
 	"Expires":         epoch,
@@ -23,7 +24,7 @@ var etagHeaders = []string{
 }
 
 func incrementRequest() {
-	requests++
+	atomic.AddUint64(&requests, 1)
 }
 
 // StartServer starts up the file server

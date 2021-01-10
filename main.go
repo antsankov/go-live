@@ -55,7 +55,8 @@ func main() {
 		go lib.Printer(_dir, ":80")
 		err = lib.StartServer(_dir, ":80", _cache)
 	} else {
-		if _quiet == false {
+		// If user is sudo we don't launch the browser.
+		if _quiet == false && isSudo() == false {
 			browser.OpenURL(fmt.Sprintf("http://localhost%s", _port))
 		}
 		go lib.Printer(_dir, _port)
@@ -66,4 +67,9 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 		os.Exit(1)
 	}
+}
+
+// IsSudo checks if user is sudo
+func isSudo() bool {
+	return (os.Geteuid() == 0)
 }

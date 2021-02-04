@@ -2,8 +2,6 @@ build:
 	go mod tidy && go mod vendor
 	go build -o ./bin/go-live && chmod +X ./bin/*
 	echo "Executable Ready in ./bin/go-live"
-test:
-	cd lib/ && go test --cover
 
 docker:
 	docker build -t antsankov/go-live:latest .
@@ -26,7 +24,7 @@ m1:
 
 test:
 	go test ./... -coverprofile=coverage.out
-	 go tool cover -html=coverage.out	
+	go tool cover -html=coverage.out	
 
 clean:
 	rm -rf ./bin/*

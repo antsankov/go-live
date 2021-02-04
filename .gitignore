@@ -6,3 +6,5 @@ go-live
 vendor/
 release/
 *.snap
+*.out
+*.html

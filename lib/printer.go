@@ -50,6 +50,6 @@ func Printer(dir string, port string) {
 		}
 		fmt.Println("\nRequests:", requests)
 		fmt.Println(time.Since(start).Round(time.Second))
-		time.Sleep(1000 * time.Millisecond)
+		time.Sleep(250 * time.Millisecond)
 	}
 }

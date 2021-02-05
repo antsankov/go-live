@@ -46,20 +46,19 @@ func main() {
 		}
 	}
 
+	// Check if port begins with ":", if not add it.
 	if _port[0] != ':' {
 		_port = ":" + _port
 	}
 
 	var err error
 	if _serve {
-		go lib.Printer(_dir, ":80")
-		err = lib.StartServer(_dir, ":80", _cache)
+		err = lib.StartServer(_dir, ":80", true)
 	} else {
 		// If user is sudo we don't launch the browser.
 		if _quiet == false && isSudo() == false {
 			browser.OpenURL(fmt.Sprintf("http://localhost%s", _port))
 		}
-		go lib.Printer(_dir, _port)
 		err = lib.StartServer(_dir, _port, _cache)
 	}
 

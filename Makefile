@@ -20,10 +20,10 @@ cross-compile:
 	env GOOS=windows GOARCH=amd64 go build -o ./release/go-live-windows-x64.exe -ldflags "-s -w" -trimpath -mod=readonly
 
 m1:
-	env GOOS=darwin GOARCH=arm64 go build -o ./release/go-live-mac-x64 -ldflags "-s -w" -trimpath -mod=readonly
+	env GOOS=darwin GOARCH=arm64 go build -o ./release/go-live-mac-arm64 -ldflags "-s -w" -trimpath -mod=readonly
 
 test:
-	go test ./... -coverprofile=coverage.out
+	go test ./... -coverprofile=coverage.out -version=true
 	go tool cover -html=coverage.out	
 
 clean:

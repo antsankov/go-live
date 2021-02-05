@@ -29,6 +29,7 @@ func incrementRequest() {
 
 // StartServer starts up the file server
 func StartServer(dir string, port string, cache bool) error {
+	go Printer(dir, port)
 	fs := http.FileServer(http.Dir(dir))
 	if cache {
 		http.Handle("/", useCache(fs))

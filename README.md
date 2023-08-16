@@ -5,9 +5,8 @@
 [![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live@v1.1.0?tab=overview)
 [![Snap Package](https://snapcraft.io/go-live/badge.svg)](https://snapcraft.io/go-live)
 
-**Docs/Tutorials/Info**: https://antsankov.gitbook.io/go-live/
 
-A fast, portable Go command line utility that serves a file directory over HTTP. Can be used for local web development, production static-site serving, or as a network file host. By default, `go-live` serves the directory it is executed in.1.0
+A fast, portable Go command line utility that serves a file directory over HTTP. Can be used for local web development, production static-site serving, or as a network file host. By default, `go-live` serves the directory it is executed in.
 
 Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and Mac, as well as ARM. See TODO list if interested in helping.
 
@@ -22,6 +21,7 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 * Host a production static site yourself as a GitHub Pages alternative.
 * A lightweight network file host that can serve over a LAN or the whole Internet.
 * Run on an embedded system or Kubernetes cluster to share files and host a static website on a network (full binary is less than 5MB). 
+**More Info**: https://antsankov.gitbook.io/go-live/
 
 ## Install
 

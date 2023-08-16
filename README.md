@@ -86,7 +86,7 @@ make cross-compile && ls release/
 ## To Release
 - For snapcraft, see snap/
 - For Mac and Homebrew, see https://github.com/mitchellh/gon
-
+- For docker (remember for version and for latest): `sudo docker build -t antsankov/go-live:v1.1.0 .` and `sudo docker push antsankov/go-live:v1.1.0`
 ## Flags
 ```
   -h  Print help message for go-live 

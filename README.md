@@ -7,7 +7,7 @@
 
 **Docs/Tutorials/Info**: https://antsankov.gitbook.io/go-live/
 
-A fast, portable Go command line utility that serves a file directory over HTTP. Can be used for local web development, production static-site serving, or as a network file host. By default, `go-live` serves the directory it is executed in.
+A fast, portable Go command line utility that serves a file directory over HTTP. Can be used for local web development, production static-site serving, or as a network file host. By default, `go-live` serves the directory it is executed in.1.0
 
 Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and Mac, as well as ARM. See TODO list if interested in helping.
 
@@ -31,7 +31,7 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 `brew tap antsankov/go-live && brew install go-live` 
 
-### MacOS (without Brew)
+### MacOS x64 (without Brew)
 
 `curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.zip && unzip go-live-mac.zip && mv go-live-mac-x64 /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
@@ -40,13 +40,18 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 ### Linux (using Snapcraft)
 `snap install go-live`
 
-### Linux 32-Bit (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+### Linux x32 (Ubuntu/RHEL/etc.):
+`wget https://github.com/antsankov/go-live/releases/download/v1.1.0/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
-### Linux 64-Bit (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-linux-x64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+### Linux x64 (Ubuntu/RHEL/etc.):
+`wget https://github.com/antsankov/go-live/releases/download/v1.1.0/go-live-linux-x64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
-- Deb packages and snap coming soon! (Help wanted)
+### Linux ARM32 (Ubuntu/RHEL/etc.):
+`wget https://github.com/antsankov/go-live/releases/download/v1.1.0/go-live-linux-arm32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+
+### Linux ARM64 (Ubuntu/RHEL/etc.):
+`wget https://github.com/antsankov/go-live/releases/download/v1.1.0/go-live-linux-arm64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+
 - Need ARM? Check the releases page.
 
 ### Docker
@@ -58,7 +63,7 @@ To run (will serve current directory on port 9000):
 
 ### Windows
 
-[Download Here and Execute](https://github.com/antsankov/go-live/releases/tag/v1.0.0)
+[Download Here and Execute](https://github.com/antsankov/go-live/releases/tag/v1.1.0)
 
 - Chocolatey coming soon! (Help wanted)
 - Make sure when running that all necessary ports are open and user has permissions (Help wanted)

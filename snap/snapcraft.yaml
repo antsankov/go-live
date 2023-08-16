@@ -27,6 +27,6 @@ apps:
 parts:
   go-live:
     plugin: go
-    go-channel: 1.15/stable
+    go-channel: 1.21/stable
     source: .
     source-type: git

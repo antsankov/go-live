@@ -78,6 +78,9 @@ git clone https://github.com/antsankov/go-live.git && cd go-live
 make cross-compile && ls release/
 ```
 
+## To Release
+- For snapcraft, see snap/
+- For Mac and Homebrew, see https://github.com/mitchellh/gon
 
 ## Flags
 ```

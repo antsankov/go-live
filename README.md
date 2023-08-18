@@ -86,9 +86,10 @@ make cross-compile && ls release/
 ## To Release
 - For snapcraft, see snap/
 - For Mac and Homebrew, see https://github.com/mitchellh/gon
-  - Make sure to have XTools installed.
+  - Make sure to have XTools installed, and opened already.
   - You need to have a valid developer certficate - check `security find-identity -p codesigning`. If it is not valid, see https://developer.apple.com/forums/thread/86161 -- you need to check the info of the developer cert to see if the "Organizational Unit" certificate is installed.
   - For gon to work, you need to use the hacked version https://github.com/mitchellh/gon/issues/64#issuecomment-1336311570 to release on Apple Silicon
+  - The "ac-password" in gon is an App specfic password for your Apple ID.
 - For docker (remember for version and for latest): `sudo docker build -t antsankov/go-live:v1.1.0 .` and `sudo docker push antsankov/go-live:v1.1.0`
 ## Flags
 ```

@@ -25,17 +25,21 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 ## Install
 
-### [Download latest Binary](https://github.com/antsankov/go-live/releases)
-
-### MacOS (with Brew)
-
+### MacOS Intel (with Brew)
 `brew tap antsankov/go-live && brew install go-live` 
+
+### MacOS Apple Silicon (with Brew)
+* For ARM (Mac M1 / M2) - make sure your Brew is istalled to `opt/homebrew`. Brew does not do this by default, easiest way to do this is to install homebrew via the .pkg from the [`homebrew` github releases page](https://github.com/Homebrew/brew/releases). 
+  
+`brew tap arch -arm64 && arch -arm64 brew install go-live`
 
 ### MacOS x64 (without Brew)
 
-`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.0.0/go-live-mac.zip && unzip go-live-mac.zip && mv go-live-mac-x64 /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
+`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.1.0/go-live-mac-x64.zip && unzip go-live-mac-x64.zip && mv go-live /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
-- ARM64 Mac release is supported. Download file from release, chmod +x, and then move it to your path. Brew coming soon.
+### MacOS Apple Silicon (without Brew)
+
+`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.1.0/go-live-mac-arm64.zip && unzip go-live-mac-arm64.zip && mv go-live /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
 ### Linux (using Snapcraft)
 `snap install go-live`
@@ -51,8 +55,6 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 ### Linux ARM64 (Ubuntu/RHEL/etc.):
 `wget https://github.com/antsankov/go-live/releases/download/v1.1.0/go-live-linux-arm64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
-
-- Need ARM? Check the releases page.
 
 ### Docker
 `docker pull antsankov/go-live`
@@ -128,12 +130,12 @@ Note: `index.html` is displayed automatically at the root of a directory.
 - [x] Docker Support
 - [ ] Benchmarking and performance tests. Large files, and concurrent connections.
 - [x] Gif and Screenshots of it in use. 
-- [ ] Tutorial Use as Github Pages Alternative
+- [x] Tutorial Use as Github Pages Alternative
 - [x] Copy Paste from Terminal fix.
 - [x] Finish Gitbook documentation. 
 - [ ] HTTPS support.
 - [x] Publish as a Go package.
-- [ ] Setup Unit tests.
+- [x] Setup Unit tests.
 - [x] Requests Counter
 - [x] Ability to download as a binary.
 - [x] Browser Opening

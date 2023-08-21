@@ -31,7 +31,7 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 ### MacOS Apple Silicon (with Brew)
 * For ARM (Mac M1 / M2) - make sure your Brew is istalled to `opt/homebrew`. Brew does not do this by default, easiest way to do this is to install homebrew via the .pkg from the [`homebrew` github releases page](https://github.com/Homebrew/brew/releases). 
   
-`brew tap arch -arm64 && arch -arm64 brew install go-live`
+`brew tap antsankov/go-live4 && arch -arm64 brew install go-live`
 
 ### MacOS x64 (without Brew)
 

@@ -2,7 +2,7 @@
 
 # go-live
 [![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live)
-[![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live@v1.2.0?tab=overview)
+[![GoDoc](https://godoc.org/github.com/antsankov/go-live?status.svg)](https://pkg.go.dev/github.com/antsankov/go-live@v1.2.1?tab=overview)
 [![Snap Package](https://snapcraft.io/go-live/badge.svg)](https://snapcraft.io/go-live)
 
 
@@ -35,26 +35,26 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 ### MacOS x64 (without Brew)
 
-`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.2.0/go-live-mac-x64.zip && unzip go-live-mac-x64.zip && mv go-live /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
+`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-mac-x64.zip && unzip go-live-mac-x64.zip && mv go-live /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
 ### MacOS Apple Silicon/M1/M2 (without Brew)
 
-`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.2.0/go-live-mac-arm64.zip && unzip go-live-mac-arm64.zip && mv go-live /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
+`curl -LJO https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-mac-arm64.zip && unzip go-live-mac-arm64.zip && mv go-live /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
 ### Linux (using Snapcraft)
 `snap install go-live`
 
 ### Linux x32 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.0/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
 ### Linux x64 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.0/go-live-linux-x64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
 ### Linux ARM32 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.0/go-live-linux-arm32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
 ### Linux ARM64 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.0/go-live-linux-arm64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
 
 ### Docker
 `docker pull antsankov/go-live`
@@ -65,7 +65,7 @@ To run (will serve current directory on port 9000):
 
 ### Windows
 
-[Download Here and Execute](https://github.com/antsankov/go-live/releases/tag/v1.2.0)
+[Download Here and Execute](https://github.com/antsankov/go-live/releases/tag/v1.2.1)
 
 - Chocolatey coming soon! (Help wanted)
 - Make sure when running that all necessary ports are open and user has permissions (Help wanted)
@@ -93,7 +93,7 @@ make cross-compile && ls release/
   - You need to have a valid developer certficate - check `security find-identity -p codesigning`. If it is not valid, see https://developer.apple.com/forums/thread/86161 -- you need to check the info of the developer cert to see if the "Organizational Unit" certificate is installed.
   - For gon to work, you need to use the hacked version https://github.com/mitchellh/gon/issues/64#issuecomment-1336311570 to release on Apple Silicon
   - The "ac-password" in gon is an App specfic password for your Apple ID.
-- For docker (remember for version and for latest): `sudo docker build -t antsankov/go-live:v1.2.0 .` and `sudo docker push antsankov/go-live:v1.2.0`
+- For docker (remember for version and for latest): `sudo docker build -t antsankov/go-live:v1.2.1 .` and `sudo docker push antsankov/go-live:v1.2.1`
 ## Flags
 ```
   -h  Print help message for go-live 

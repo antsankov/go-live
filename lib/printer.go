@@ -7,7 +7,7 @@ import (
 )
 
 // VERSION of Package
-const VERSION = "1.2.0"
+const VERSION = "1.2.1"
 
 func printStartMessage(path string, port string) {
 	// Clear the screen.
@@ -47,7 +47,7 @@ func Printer(dir string, port string) {
 
 	printStartMessage(path, port)
 	for {
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(500 * time.Millisecond)
 		printServerInformation(path, port)
 		// Move to the timeSince row, and clear it.
 		fmt.Print("\033[8;1H")

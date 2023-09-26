@@ -18,7 +18,7 @@ COPY --from=builder /go/src/antsankov/go-live/bin/go-live /usr/bin/go-live
 RUN chmod +x /usr/bin/go-live
 
 ARG VERSION=none
-LABEL version=1.2.0
+LABEL version=1.2.1
 
 WORKDIR /workdir
 

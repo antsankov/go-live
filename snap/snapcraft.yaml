@@ -1,5 +1,5 @@
 name: go-live
-version: '1.2.0'
+version: '1.2.1'
 summary: A very lightweight CLI utility to start serving a file directory
 description: |
   go-live can be used for local web development, production static-site serving, or as a network file server. By default go-live serves the directory it is executed in.

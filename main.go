@@ -4,13 +4,14 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"runtime"
 
 	"github.com/antsankov/go-live/lib"
 	"github.com/pkg/browser"
 )
 
 // VERSION of Package
-const VERSION = "1.1.0"
+const VERSION = "1.2.0"
 
 func main() {
 	var _quiet bool
@@ -34,8 +35,8 @@ func main() {
 
 	flag.Parse()
 
-	if _version {
-		fmt.Println(VERSION)
+	if _version || (len(os.Args) >= 2 && os.Args[1] == "version") {
+		fmt.Printf("v%s (%s/%s)\n", VERSION, runtime.GOOS, runtime.GOARCH)
 		return
 	}
 
@@ -56,7 +57,7 @@ func main() {
 		err = lib.StartServer(_dir, ":80", true)
 	} else {
 		// If user is sudo we don't launch the browser.
-		if _quiet == false && isSudo() == false {
+		if !_quiet && !isSudo() {
 			browser.OpenURL(fmt.Sprintf("http://localhost%s", _port))
 		}
 		err = lib.StartServer(_dir, _port, _cache)

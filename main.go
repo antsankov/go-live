@@ -13,7 +13,6 @@ import (
 // VERSION of Package
 const VERSION = "1.2.0"
 
-
 func main() {
 	var _quiet bool
 	flag.BoolVar(&_quiet, "q", false, "Quiet stops go-live from opening the browser when started.")

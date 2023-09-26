@@ -33,25 +33,6 @@ func TestServerWithoutCache(t *testing.T) {
 	}
 }
 
-// func TestServerWithCache(t *testing.T) {
-// 	go StartServer(".", ":91", false)
-// 	resp, err := http.Get("http://127.0.0.1:80/")
-// 	if err != nil {
-// 		t.Errorf("Couldn't get for the test %s", err)
-// 	}
-
-// 	body, _ := ioutil.ReadAll(resp.Body)
-// 	if resp.Header.Get("Cache-Control") == "" {
-// 		t.Error("Server not setting cache control")
-// 	}
-// 	if resp.StatusCode != 200 {
-// 		t.Error("Server not returning 200")
-// 	}
-// 	if body == nil {
-// 		t.Error("Body is nil, server not working")
-// 	}
-// }
-
 func TestInitialPrint(t *testing.T) {
 	rescueStdout := os.Stdout
 	r, w, _ := os.Pipe()
@@ -81,7 +62,7 @@ func TestPrintServerInfo(t *testing.T) {
 	r, w, _ := os.Pipe()
 	os.Stdout = w
 
-	printServerInformation("/", ":80", "127.0.0.1")
+	printServerInformation("/", ":80")
 
 	w.Close()
 	out, _ := ioutil.ReadAll(r)

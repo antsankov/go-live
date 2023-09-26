@@ -24,7 +24,7 @@ m1:
 	env GOOS=darwin GOARCH=arm64 go build -o ./release/go-live-mac-arm64 -ldflags "-s -w" -trimpath -mod=readonly
 
 test:
-	go test ./... -coverprofile=coverage.out -version=true
+	go test ./... -coverprofile=coverage.out
 	go tool cover -html=coverage.out	
 
 clean:

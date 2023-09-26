@@ -28,16 +28,16 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 ### MacOS Intel (with Brew)
 `brew tap antsankov/go-live && brew install go-live` 
 
-### MacOS Apple Silicon (with Brew)
+### MacOS Apple Silicon/M1/M2 (with Brew)
 * For ARM (Mac M1 / M2) - make sure your Brew is istalled to `opt/homebrew`. Brew does not do this by default, easiest way to do this is to install homebrew via the .pkg from the [`homebrew` github releases page](https://github.com/Homebrew/brew/releases). 
   
-`brew tap antsankov/go-live4 && arch -arm64 brew install go-live`
+`brew tap antsankov/go-live && arch -arm64 brew install go-live`
 
 ### MacOS x64 (without Brew)
 
 `curl -LJO https://github.com/antsankov/go-live/releases/download/v1.2.0/go-live-mac-x64.zip && unzip go-live-mac-x64.zip && mv go-live /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
-### MacOS Apple Silicon (without Brew)
+### MacOS Apple Silicon/M1/M2 (without Brew)
 
 `curl -LJO https://github.com/antsankov/go-live/releases/download/v1.2.0/go-live-mac-arm64.zip && unzip go-live-mac-arm64.zip && mv go-live /usr/local/bin/go-live && chmod +x /usr/local/bin/go-live && go-live`
 
@@ -86,8 +86,9 @@ make cross-compile && ls release/
 ```
 
 ## To Release
-- For snapcraft, see snap/
+- For snapcraft it builds automatically when you push it
 - For Mac and Homebrew, see https://github.com/mitchellh/gon
+  - `gon gon.json`
   - Make sure to have XTools installed, and opened already.
   - You need to have a valid developer certficate - check `security find-identity -p codesigning`. If it is not valid, see https://developer.apple.com/forums/thread/86161 -- you need to check the info of the developer cert to see if the "Organizational Unit" certificate is installed.
   - For gon to work, you need to use the hacked version https://github.com/mitchellh/gon/issues/64#issuecomment-1336311570 to release on Apple Silicon

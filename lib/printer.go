@@ -6,33 +6,29 @@ import (
 	"time"
 )
 
+// VERSION of Package
+const VERSION = "1.2.0"
+
 func printStartMessage(path string, port string) {
+	// Clear the screen.
 	fmt.Print("\033[2J")
+	// Move the cursor to the upper-left corner of the screen.
 	fmt.Print("\033[H")
-	fmt.Println("go-live\n--")
+	fmt.Printf("go-live\n--\n")
 	fmt.Printf("Serving: %s\n", path)
 	fmt.Printf("Local: http://localhost%s/\n", port)
 }
 
-func printServerInformation(path string, port string, lastIP string) {
-	// Move to the fifth row, change if more print statements are added.
+func printServerInformation(path string, port string) {
+	// Move to the fifth row, 1st column change if more print statements are added.
 	fmt.Print("\033[5;1H")
 	localIP, err := GetLocalIP()
-	if err == nil {
+	if err == nil && localIP != "" {
 		fmt.Printf("Net: http://%s%s/\n", localIP, port)
-		if lastIP == "" {
-			lastIP = localIP
-		}
 	} else {
-		// This is case when connection disconnects
-		if lastIP != localIP {
-			printStartMessage(path, port)
-			fmt.Print("\033[6;1H")
-			lastIP = localIP
-		} else {
-			lastIP = ""
-			fmt.Println()
-		}
+		// If there is no network connection, erase the line.
+		fmt.Print("\033[K")
+		fmt.Println()
 	}
 	fmt.Println("\nRequests:", requests)
 }
@@ -50,10 +46,12 @@ func Printer(dir string, port string) {
 	}
 
 	printStartMessage(path, port)
-	var lastIP string
 	for {
-		printServerInformation(path, port, lastIP)
-		fmt.Println(time.Since(start).Round(time.Second))
-		time.Sleep(250 * time.Millisecond)
+		time.Sleep(100 * time.Millisecond)
+		printServerInformation(path, port)
+		// Move to the timeSince row, and clear it.
+		fmt.Print("\033[8;1H")
+		fmt.Print("\033[K")
+		fmt.Printf("%s\n", time.Since(start).Round(time.Second))
 	}
 }

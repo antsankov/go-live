@@ -1,4 +1,4 @@
-![go-live logo](./logo.png)
+<img src="./logo.png" alt="drawing" width="75"/>
 
 # go-live
 [![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live)
@@ -12,16 +12,15 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 
 *To use*: Run `go-live` in your terminal while in directory you want to serve.
 
+## Use-Cases
+* Local development of an HTML/JS project (can serve any frontend code).
+* Host a production static site yourself as a GitHub Pages alternative. [See tutorial here](https://antsankov.medium.com/how-to-host-your-own-github-pages-server-on-digital-ocean-in-less-than-15-minutes-using-go-live-82300a16e23a)
+* A lightweight network file host that can serve over a LAN or the whole Internet.
+* Run on an embedded system or Kubernetes cluster to share files and host a static website on a network (full binary is less than 5MB). 
+
 ## Example
 
 ![go-live-demo](https://user-images.githubusercontent.com/2533512/94636832-5554c900-0293-11eb-8aea-585f8d007fab.gif)
-
-## Use-Cases
-* Local development of an HTML/JS project (can serve any frontend code).
-* Host a production static site yourself as a GitHub Pages alternative.
-* A lightweight network file host that can serve over a LAN or the whole Internet.
-* Run on an embedded system or Kubernetes cluster to share files and host a static website on a network (full binary is less than 5MB). 
-**More Info**: https://antsankov.gitbook.io/go-live/
 
 ## Install
 

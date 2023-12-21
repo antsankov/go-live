@@ -44,16 +44,16 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 `snap install go-live`
 
 ### Linux x32 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`sudo wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x32 -O /usr/bin/go-live && sudo chmod +x /usr/bin/go-live`
 
 ### Linux x64 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`sudo wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x64 -O /usr/bin/go-live && sudo chmod +x /usr/bin/go-live`
 
 ### Linux ARM32 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`sudo wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm32 -O /usr/bin/go-live && sudo chmod +x /usr/bin/go-live`
 
 ### Linux ARM64 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`sudo wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm64 -O /usr/bin/go-live && sudo chmod +x /usr/bin/go-live`
 
 ### Docker
 `docker pull antsankov/go-live`

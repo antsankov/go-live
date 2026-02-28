@@ -15,7 +15,7 @@ func TestIp(t *testing.T) {
 	}
 }
 func TestServerWithoutCache(t *testing.T) {
-	go StartServer(".", ":80", false)
+	go StartServer(".", ":80", false, false, "", "")
 	resp, err := http.Get("http://127.0.0.1/")
 	if err != nil {
 		t.Errorf("Couldn't get for the test %s", err)
@@ -38,7 +38,7 @@ func TestInitialPrint(t *testing.T) {
 	r, w, _ := os.Pipe()
 	os.Stdout = w
 
-	printStartMessage("/", ":80")
+	printStartMessage("/", ":80", false)
 
 	w.Close()
 	out, _ := ioutil.ReadAll(r)
@@ -57,12 +57,32 @@ func TestInitialPrint(t *testing.T) {
 	}
 }
 
+func TestInitialPrintHTTPS(t *testing.T) {
+	rescueStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	printStartMessage("/", ":9000", true)
+
+	w.Close()
+	out, _ := ioutil.ReadAll(r)
+	os.Stdout = rescueStdout
+
+	if !strings.Contains(string(out), "go-live (HTTPS)") {
+		t.Error("Did not find HTTPS indicator")
+	}
+
+	if !strings.Contains(string(out), "https://localhost:9000/") {
+		t.Error("Did not find HTTPS local URL")
+	}
+}
+
 func TestPrintServerInfo(t *testing.T) {
 	rescueStdout := os.Stdout
 	r, w, _ := os.Pipe()
 	os.Stdout = w
 
-	printServerInformation("/", ":80")
+	printServerInformation("/", ":80", false)
 
 	w.Close()
 	out, _ := ioutil.ReadAll(r)
@@ -74,5 +94,34 @@ func TestPrintServerInfo(t *testing.T) {
 
 	if !strings.Contains(string(out), "Requests") {
 		t.Error("Did not find requests")
+	}
+}
+
+func TestPrintServerInfoHTTPS(t *testing.T) {
+	rescueStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	printServerInformation("/", ":9000", true)
+
+	w.Close()
+	out, _ := ioutil.ReadAll(r)
+	os.Stdout = rescueStdout
+
+	if !strings.Contains(string(out), "Net: https://") {
+		t.Error("Did not find HTTPS net address")
+	}
+}
+
+func TestGenerateSelfSignedCert(t *testing.T) {
+	cert, err := GenerateSelfSignedCert()
+	if err != nil {
+		t.Fatalf("GenerateSelfSignedCert failed: %s", err)
+	}
+	if len(cert.Certificate) == 0 {
+		t.Error("Certificate is empty")
+	}
+	if cert.PrivateKey == nil {
+		t.Error("PrivateKey is nil")
 	}
 }

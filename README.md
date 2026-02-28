@@ -1,4 +1,4 @@
-![go-live logo](./logo.png)
+<img src="./logo.png" alt="drawing" width="75"/>
 
 # go-live
 [![Go Report](https://goreportcard.com/badge/github.com/antsankov/go-live)](https://goreportcard.com/report/github.com/antsankov/go-live)
@@ -6,31 +6,30 @@
 [![Snap Package](https://snapcraft.io/go-live/badge.svg)](https://snapcraft.io/go-live)
 
 
-A fast, portable Go command line utility that serves a file directory over HTTP. Can be used for local web development, production static-site serving, or as a network file host. By default, `go-live` serves the directory it is executed in.
+A really fast, super-tiny Go command line utility that serves a file directory over HTTP. Does one thing, and well. Can be used for local web development, production static-site serving, or as a network file host. By default, `go-live` serves the directory it is executed in.
 
 Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and Mac, as well as ARM. See TODO list if interested in helping.
 
 *To use*: Run `go-live` in your terminal while in directory you want to serve.
 
+## Use-Cases
+* Local development of an HTML/JS project (can serve any frontend code).
+* Host a production static site yourself as a GitHub Pages alternative. [See tutorial here](https://antsankov.medium.com/how-to-host-your-own-github-pages-server-on-digital-ocean-in-less-than-15-minutes-using-go-live-82300a16e23a)
+* A lightweight network file host that can serve over a LAN or the whole Internet.
+* Run on an embedded system or Kubernetes cluster to share files and host a static website on a network (full binary is less than 5MB).
+
 ## Example
 
 ![go-live-demo](https://user-images.githubusercontent.com/2533512/94636832-5554c900-0293-11eb-8aea-585f8d007fab.gif)
 
-## Use-Cases
-* Local development of an HTML/JS project (can serve any frontend code).
-* Host a production static site yourself as a GitHub Pages alternative.
-* A lightweight network file host that can serve over a LAN or the whole Internet.
-* Run on an embedded system or Kubernetes cluster to share files and host a static website on a network (full binary is less than 5MB). 
-**More Info**: https://antsankov.gitbook.io/go-live/
-
 ## Install
 
 ### MacOS Intel (with Brew)
-`brew tap antsankov/go-live && brew install go-live` 
+`brew tap antsankov/go-live && brew install go-live`
 
 ### MacOS Apple Silicon/M1/M2 (with Brew)
-* For ARM (Mac M1 / M2) - make sure your Brew is istalled to `opt/homebrew`. Brew does not do this by default, easiest way to do this is to install homebrew via the .pkg from the [`homebrew` github releases page](https://github.com/Homebrew/brew/releases). 
-  
+* For ARM (Mac M1 / M2) - make sure your Brew is istalled to `opt/homebrew`. Brew does not do this by default, easiest way to do this is to install homebrew via the .pkg from the [`homebrew` github releases page](https://github.com/Homebrew/brew/releases).
+
 `brew tap antsankov/go-live && arch -arm64 brew install go-live`
 
 ### MacOS x64 (without Brew)
@@ -45,16 +44,16 @@ Based on JavaScript's famous `live-server` utility. Supports Linux, Windows, and
 `snap install go-live`
 
 ### Linux x32 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`sudo wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x32 -O /usr/bin/go-live && sudo chmod +x /usr/bin/go-live`
 
 ### Linux x64 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`sudo wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-x64 -O /usr/bin/go-live && sudo chmod +x /usr/bin/go-live`
 
 ### Linux ARM32 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm32 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`sudo wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm32 -O /usr/bin/go-live && sudo chmod +x /usr/bin/go-live`
 
 ### Linux ARM64 (Ubuntu/RHEL/etc.):
-`wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm64 -O /usr/bin/go-live && chmod +x /usr/bin/go-live`
+`sudo wget https://github.com/antsankov/go-live/releases/download/v1.2.1/go-live-linux-arm64 -O /usr/bin/go-live && sudo chmod +x /usr/bin/go-live`
 
 ### Docker
 `docker pull antsankov/go-live`
@@ -96,7 +95,7 @@ make cross-compile && ls release/
 - For docker (remember for version and for latest): `sudo docker build -t antsankov/go-live:v1.2.1 .` and `sudo docker push antsankov/go-live:v1.2.1`
 ## Flags
 ```
-  -h  Print help message for go-live 
+  -h  Print help message for go-live
   --help
 
   -c	Allow browser caching of pages. Can lead to stale results, off by default.
@@ -116,6 +115,15 @@ make cross-compile && ls release/
   -s	Start in server mode on port 80 and in quiet.
   --serve
 
+  -S	Enable HTTPS/TLS mode. Uses a self-signed certificate if --cert and --key are not provided.
+  --https
+
+  --cert string
+    	Path to TLS certificate PEM file.
+
+  --key string
+    	Path to TLS private key PEM file.
+
   -v	Print the version of go-live.
   --version
 ```
@@ -126,15 +134,55 @@ Note: `index.html` is displayed automatically at the root of a directory.
 
 `sudo go-live --dir ~/example.com/ --serve`
 
+### HTTPS
+
+Serve with an auto-generated self-signed certificate:
+
+`go-live --https`
+
+Serve with your own certificate:
+
+`go-live --https --cert server.pem --key server-key.pem`
+
+Providing `--cert` and `--key` automatically enables HTTPS.
+
+## Benchmarks
+
+go-live vs caddy (Go), miniserve (Rust), and live-server (Node.js) serving files over HTTP on an Apple M2 Pro.
+
+| Server | Version | Language | Binary Size |
+|--------|---------|----------|-------------|
+| go-live | v1.3.0 | Go | 5.8 MB |
+| caddy | v2.11.1 | Go | 70 MB |
+| miniserve | v0.33.0 | Rust | 5.3 MB |
+| live-server | v1.2.2 | Node.js | 9.2 MB + 76 MB Node.js runtime |
+
+![Benchmark](./benchmark/benchmark.png)
+
+Requests/sec measures fully completed, successful HTTP requests where the entire response body was downloaded. For example, 165 req/s on a 10MB file means ~1.65 GB/s of delivered data.
+
+go-live is the fastest across all file sizes and concurrency levels. For small files at 50 concurrent clients, go-live handles **22,421 req/s** — 2.9x caddy, 1.7x miniserve, and 4.8x live-server.
+
+### Why is go-live fast?
+
+Go's `net/http` file server uses `sendfile(2)` — a kernel syscall that transfers file data directly from disk to the network socket without copying through userspace. This zero-copy path is why go-live and caddy (also Go) lead on large files.
+
+miniserve (Rust/hyper/tokio) does not use `sendfile`. Every byte goes disk → kernel → userspace → kernel → socket. Tokio also fakes async file I/O by dispatching blocking reads to a thread pool, adding context-switching overhead. This is why miniserve falls behind even Node.js's live-server on larger files, despite being faster on small files where raw request processing speed matters more.
+
+Run benchmarks yourself:
+```
+make bench-compare
+```
+
 ## TODO (Help Wanted)
 - [ ] Android Support
 - [x] Docker Support
-- [ ] Benchmarking and performance tests. Large files, and concurrent connections.
-- [x] Gif and Screenshots of it in use. 
+- [x] Benchmarking and performance tests. Large files, and concurrent connections.
+- [x] Gif and Screenshots of it in use.
 - [x] Tutorial Use as Github Pages Alternative
 - [x] Copy Paste from Terminal fix.
-- [x] Finish Gitbook documentation. 
-- [ ] HTTPS support.
+- [x] Finish Gitbook documentation.
+- [x] HTTPS support.
 - [x] Publish as a Go package.
 - [x] Setup Unit tests.
 - [x] Requests Counter

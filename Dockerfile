@@ -1,24 +1,20 @@
-FROM golang:1.21 as builder
+FROM golang:1.26 AS builder
 
 WORKDIR /go/src/antsankov/go-live
 
-# cache devtools
-# COPY ./scripts/devtools.sh /go/src/mikefarah/yq/scripts/devtools.sh
-# RUN ./scripts/devtools.sh
+COPY go.mod ./
+RUN go mod download
 
-COPY . /go/src/antsankov/go-live
+COPY . .
 
-RUN CGO_ENABLED=0 make build
+RUN CGO_ENABLED=0 go build -ldflags "-s -w" -trimpath -o /go/bin/go-live .
 
-# Choose alpine as a base image to make this useful for CI, as many
-# CI tools expect an interactive shell inside the container
-FROM alpine:3.18 as production
+FROM alpine:3.21 AS production
 
-COPY --from=builder /go/src/antsankov/go-live/bin/go-live /usr/bin/go-live
-RUN chmod +x /usr/bin/go-live
+COPY --from=builder /go/bin/go-live /usr/bin/go-live
 
-ARG VERSION=none
-LABEL version=1.2.1
+LABEL version="1.3.0"
 
 WORKDIR /workdir
 
+ENTRYPOINT ["go-live"]

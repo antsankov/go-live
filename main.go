@@ -7,11 +7,10 @@ import (
 	"runtime"
 
 	"github.com/antsankov/go-live/lib"
-	"github.com/pkg/browser"
 )
 
 // VERSION of Package
-const VERSION = "1.2.1"
+const VERSION = "1.3.0"
 
 func main() {
 	var _quiet bool
@@ -32,12 +31,30 @@ func main() {
 	var _serve bool
 	flag.BoolVar(&_serve, "s", false, "Start in server mode on port 80 and in quiet.")
 	flag.BoolVar(&_serve, "serve", false, "")
+	var _https bool
+	flag.BoolVar(&_https, "S", false, "Enable HTTPS/TLS mode. Uses a self-signed certificate if --cert and --key are not provided.")
+	flag.BoolVar(&_https, "https", false, "")
+	var _cert string
+	flag.StringVar(&_cert, "cert", "", "Path to TLS certificate PEM file.")
+	var _key string
+	flag.StringVar(&_key, "key", "", "Path to TLS private key PEM file.")
 
 	flag.Parse()
 
 	if _version || (len(os.Args) >= 2 && os.Args[1] == "version") {
 		fmt.Printf("v%s (%s/%s)\n", VERSION, runtime.GOOS, runtime.GOARCH)
 		return
+	}
+
+	// If cert or key is provided, enable HTTPS automatically.
+	if _cert != "" || _key != "" {
+		_https = true
+	}
+
+	// Validate that both cert and key are provided together.
+	if (_cert != "" && _key == "") || (_cert == "" && _key != "") {
+		fmt.Fprintln(os.Stderr, "Error: both --cert and --key must be provided together.")
+		os.Exit(1)
 	}
 
 	if _dir != "./" {
@@ -52,15 +69,20 @@ func main() {
 		_port = ":" + _port
 	}
 
+	scheme := "http"
+	if _https {
+		scheme = "https"
+	}
+
 	var err error
 	if _serve {
-		err = lib.StartServer(_dir, ":80", true)
+		err = lib.StartServer(_dir, ":80", true, _https, _cert, _key)
 	} else {
 		// If user is sudo we don't launch the browser.
 		if !_quiet && !isSudo() {
-			browser.OpenURL(fmt.Sprintf("http://localhost%s", _port))
+			lib.OpenBrowser(fmt.Sprintf("%s://localhost%s", scheme, _port))
 		}
-		err = lib.StartServer(_dir, _port, _cache)
+		err = lib.StartServer(_dir, _port, _cache, _https, _cert, _key)
 	}
 
 	if err != nil {

@@ -1,20 +1,19 @@
 name: go-live
-version: '1.2.1'
+version: '1.3.0'
 summary: A very lightweight CLI utility to start serving a file directory
 description: |
   go-live can be used for local web development, production static-site serving, or as a network file server. By default go-live serves the directory it is executed in.
 
 license: Apache-2.0
-base: core20
+base: core24
 icon: logo.png
 grade: stable
 confinement: strict
 architectures:
-  - "i386"
   - amd64
   - armhf
   - arm64
- 
+
 apps:
   go-live:
     command: bin/go-live
@@ -27,6 +26,6 @@ apps:
 parts:
   go-live:
     plugin: go
-    go-channel: 1.21/stable
+    go-channel: 1.26/stable
     source: .
     source-type: git

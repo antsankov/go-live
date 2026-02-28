@@ -6,25 +6,33 @@ import (
 	"time"
 )
 
-// VERSION of Package
-const VERSION = "1.2.1"
+func scheme(tlsEnabled bool) string {
+	if tlsEnabled {
+		return "https"
+	}
+	return "http"
+}
 
-func printStartMessage(path string, port string) {
+func printStartMessage(path string, port string, tlsEnabled bool) {
 	// Clear the screen.
 	fmt.Print("\033[2J")
 	// Move the cursor to the upper-left corner of the screen.
 	fmt.Print("\033[H")
-	fmt.Printf("go-live\n--\n")
+	if tlsEnabled {
+		fmt.Printf("go-live (HTTPS)\n--\n")
+	} else {
+		fmt.Printf("go-live\n--\n")
+	}
 	fmt.Printf("Serving: %s\n", path)
-	fmt.Printf("Local: http://localhost%s/\n", port)
+	fmt.Printf("Local: %s://localhost%s/\n", scheme(tlsEnabled), port)
 }
 
-func printServerInformation(path string, port string) {
+func printServerInformation(path string, port string, tlsEnabled bool) {
 	// Move to the fifth row, 1st column change if more print statements are added.
 	fmt.Print("\033[5;1H")
 	localIP, err := GetLocalIP()
 	if err == nil && localIP != "" {
-		fmt.Printf("Net: http://%s%s/\n", localIP, port)
+		fmt.Printf("Net: %s://%s%s/\033[K\n", scheme(tlsEnabled), localIP, port)
 	} else {
 		// If there is no network connection, erase the line.
 		fmt.Print("\033[K")
@@ -34,7 +42,7 @@ func printServerInformation(path string, port string) {
 }
 
 // Printer prints out the information associated with the server on a loop.
-func Printer(dir string, port string) {
+func Printer(dir string, port string, tlsEnabled bool) {
 	// Need to give time if there is a server error.
 	time.Sleep(5 * time.Millisecond)
 	start := time.Now()
@@ -45,10 +53,10 @@ func Printer(dir string, port string) {
 		path = dir
 	}
 
-	printStartMessage(path, port)
+	printStartMessage(path, port, tlsEnabled)
 	for {
 		time.Sleep(500 * time.Millisecond)
-		printServerInformation(path, port)
+		printServerInformation(path, port, tlsEnabled)
 		// Move to the timeSince row, and clear it.
 		fmt.Print("\033[8;1H")
 		fmt.Print("\033[K")

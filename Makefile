@@ -1,6 +1,9 @@
+VERSION ?= dev
+LDFLAGS := -s -w -X main.VERSION=$(VERSION)
+
 build:
 	go mod tidy
-	go build -o ./bin/go-live -ldflags "-s -w" -trimpath && chmod +x ./bin/*
+	go build -o ./bin/go-live -ldflags "$(LDFLAGS)" -trimpath && chmod +x ./bin/*
 	echo "Executable Ready in ./bin/go-live"
 
 docker:
@@ -10,15 +13,13 @@ format:
 	gofmt -l -s -w .
 
 cross-compile:
-	env GOOS=linux GOARCH=arm go build -o ./release/go-live-linux-arm32 -ldflags "-s -w" -trimpath
-	env GOOS=linux GOARCH=arm64 go build -o ./release/go-live-linux-arm64 -ldflags "-s -w" -trimpath
-	env GOOS=darwin GOARCH=amd64 go build -o ./release/go-live-mac-x64 -ldflags "-s -w" -trimpath
-	env GOOS=linux GOARCH=386 go build -o ./release/go-live-linux-x32 -ldflags "-s -w" -trimpath
-	env GOOS=linux GOARCH=amd64 go build -o ./release/go-live-linux-x64 -ldflags "-s -w" -trimpath
-	env GOOS=windows GOARCH=386 go build -o ./release/go-live-windows-x32.exe -ldflags "-s -w" -trimpath
-	env GOOS=windows GOARCH=amd64 go build -o ./release/go-live-windows-x64.exe -ldflags "-s -w" -trimpath
-	env GOOS=windows GOARCH=arm64 go build -o ./release/go-live-windows-arm64.exe -ldflags "-s -w" -trimpath
-	env GOOS=darwin GOARCH=arm64 go build -o ./release/go-live-mac-arm64 -ldflags "-s -w" -trimpath
+	rm -rf ./release && mkdir -p ./release
+	env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o ./release/go-live-mac-x64 -ldflags "$(LDFLAGS)" -trimpath
+	env CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o ./release/go-live-mac-arm64 -ldflags "$(LDFLAGS)" -trimpath
+	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./release/go-live-linux-x64 -ldflags "$(LDFLAGS)" -trimpath
+	env CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o ./release/go-live-linux-arm64 -ldflags "$(LDFLAGS)" -trimpath
+	env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./release/go-live-windows-x64.exe -ldflags "$(LDFLAGS)" -trimpath
+	env CGO_ENABLED=0 GOOS=windows GOARCH=arm64 go build -o ./release/go-live-windows-arm64.exe -ldflags "$(LDFLAGS)" -trimpath
 
 test:
 	go test ./... -coverprofile=coverage.out

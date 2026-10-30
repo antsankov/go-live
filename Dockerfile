@@ -13,7 +13,7 @@ FROM alpine:3.21 AS production
 
 COPY --from=builder /go/bin/go-live /usr/bin/go-live
 
-LABEL version="1.3.0"
+LABEL version="1.4.0"
 
 WORKDIR /workdir
 
